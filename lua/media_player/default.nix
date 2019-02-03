@@ -1,10 +1,7 @@
-{luaPackages, fetchFromGitHub}:
+{dbus_proxy, lua, buildLuaPackage, fetchFromGitHub}:
 
 let
 
-  lua = luaPackages.lua;
-  buildLuaPackage = luaPackages.buildLuaPackage;
-  lgi = luaPackages.lgi;
   simpleName = "media_player";
 
 in
@@ -20,7 +17,7 @@ buildLuaPackage rec {
     sha256 = "1c9aimf5kw6k800wv8cvazqyndbg9zgfv9yi38my8zmlrvjvmg6r";
   };
 
-  propagatedBuildInputs = [ luaPackages.dbus_proxy ];
+  propagatedBuildInputs = [ dbus_proxy ];
 
   buildPhase = ":";
 

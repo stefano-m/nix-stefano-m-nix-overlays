@@ -1,10 +1,7 @@
-{luaPackages, fetchFromGitHub}:
+{dbus_proxy, lua, buildLuaPackage, fetchFromGitHub}:
 
 let
 
-  lua = luaPackages.lua;
-  buildLuaPackage = luaPackages.buildLuaPackage;
-  lgi = luaPackages.lgi;
   simpleName = "connman_dbus";
 
 in
@@ -20,7 +17,7 @@ buildLuaPackage rec {
     sha256 = "1jpg757q0s2rj3brccbka5ad514bqcq97qisxf2zc6pk5ql0jbn0";
   };
 
-  propagatedBuildInputs = [ luaPackages.dbus_proxy ];
+  propagatedBuildInputs = [ dbus_proxy ];
 
   buildPhase = ":";
 

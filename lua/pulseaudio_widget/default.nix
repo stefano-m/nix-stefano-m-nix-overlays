@@ -1,10 +1,7 @@
-{luaPackages, fetchFromGitHub}:
+{pulseaudio_dbus, lua, buildLuaPackage, fetchFromGitHub}:
 
 let
 
-  lua = luaPackages.lua;
-  buildLuaPackage = luaPackages.buildLuaPackage;
-  lgi = luaPackages.lgi;
   simpleName = "pulseaudio_widget";
 
 in
@@ -21,7 +18,7 @@ buildLuaPackage rec {
   };
 
   # FIXME: cannot find awesome libraries
-  propagatedBuildInputs = [ luaPackages.pulseaudio_dbus ];
+  propagatedBuildInputs = [ pulseaudio_dbus ];
 
   buildPhase = ":";
 

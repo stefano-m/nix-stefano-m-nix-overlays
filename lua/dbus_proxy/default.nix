@@ -1,10 +1,7 @@
-{luaPackages, fetchFromGitHub}:
+{lua, lgi, buildLuaPackage, fetchFromGitHub}:
 
 let
 
-  lua = luaPackages.lua;
-  buildLuaPackage = luaPackages.buildLuaPackage;
-  lgi = luaPackages.lgi;
   simpleName = "dbus_proxy";
 
 in

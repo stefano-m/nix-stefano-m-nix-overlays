@@ -1,10 +1,6 @@
-{luaPackages, fetchFromGitHub}:
+{connman_dbus, lua, buildLuaPackage, fetchFromGitHub}:
 
 let
-
-  lua = luaPackages.lua;
-  buildLuaPackage = luaPackages.buildLuaPackage;
-  lgi = luaPackages.lgi;
   simpleName = "connman_widget";
 
 in
@@ -21,7 +17,7 @@ buildLuaPackage rec {
   };
 
   # FIXME: cannot find awesome libraries
-  propagatedBuildInputs = [ luaPackages.connman_dbus ];
+  propagatedBuildInputs = [ connman_dbus ];
 
   buildPhase = ":";
 

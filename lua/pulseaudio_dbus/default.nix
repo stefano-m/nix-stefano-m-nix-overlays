@@ -1,10 +1,7 @@
-{luaPackages, fetchFromGitHub}:
+{dbus_proxy, lua, buildLuaPackage, fetchFromGitHub}:
 
 let
 
-  lua = luaPackages.lua;
-  buildLuaPackage = luaPackages.buildLuaPackage;
-  lgi = luaPackages.lgi;
   simpleName = "pulseaudio_dbus";
 
 in
@@ -20,7 +17,7 @@ buildLuaPackage rec {
     sha256 = "1l4nalziwmy3d7sb4jij2d1cml5ghzkg8cwj25v82brj36v3kqd7";
   };
 
-  propagatedBuildInputs = [ luaPackages.dbus_proxy ];
+  propagatedBuildInputs = [ dbus_proxy ];
 
   buildPhase = ":";
 

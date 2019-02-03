@@ -1,10 +1,7 @@
-{luaPackages, fetchFromGitHub}:
+{upower_dbus, lua, buildLuaPackage, fetchFromGitHub}:
 
 let
 
-  lua = luaPackages.lua;
-  buildLuaPackage = luaPackages.buildLuaPackage;
-  lgi = luaPackages.lgi;
   simpleName = "power_widget";
 
 in
@@ -21,7 +18,7 @@ buildLuaPackage rec {
   };
 
   # FIXME: cannot find awesome libraries
-  propagatedBuildInputs = [ luaPackages.upower_dbus ];
+  propagatedBuildInputs = [ upower_dbus ];
 
   buildPhase = ":";
 

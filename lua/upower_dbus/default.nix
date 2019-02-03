@@ -1,10 +1,7 @@
-{luaPackages, fetchFromGitHub}:
+{dbus_proxy, enum, lua, buildLuaPackage, fetchFromGitHub}:
 
 let
 
-  lua = luaPackages.lua;
-  buildLuaPackage = luaPackages.buildLuaPackage;
-  lgi = luaPackages.lgi;
   simpleName = "upower_dbus";
 
 in
@@ -21,8 +18,8 @@ buildLuaPackage rec {
   };
 
   propagatedBuildInputs = [
-    luaPackages.dbus_proxy
-    luaPackages.enum
+    dbus_proxy
+    enum
   ];
 
   buildPhase = ":";

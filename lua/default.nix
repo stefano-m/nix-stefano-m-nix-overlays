@@ -1,25 +1,50 @@
-{pkgs ? import <nixpkgs> {}}:
+{ lua, luaPackages, callPackage, ... }:
 
-with pkgs;
+assert lua.luaversion == luaPackages.lua.luaversion;
 
-{
+rec {
 
-  connman_dbus      = callPackage ./connman_dbus {};
+  dbus_proxy        = callPackage ./dbus_proxy {
+    inherit (luaPackages) lgi buildLuaPackage;
+  };
 
-  connman_widget    = callPackage ./connman_widget {};
+  connman_dbus      = callPackage ./connman_dbus {
+    inherit dbus_proxy;
+    inherit (luaPackages) buildLuaPackage;
+  };
 
-  dbus_proxy        = callPackage ./dbus_proxy {};
+  connman_widget    = callPackage ./connman_widget {
+    inherit connman_dbus;
+    inherit (luaPackages) buildLuaPackage;
+  };
 
-  enum              = callPackage ./enum {};
+  enum              = callPackage ./enum {
+    inherit (luaPackages) buildLuaPackage;
+  };
 
-  media_player      = callPackage ./media_player {};
+  media_player      = callPackage ./media_player {
+    inherit dbus_proxy;
+    inherit (luaPackages) buildLuaPackage;
+  };
 
-  power_widget      = callPackage ./power_widget {};
+  pulseaudio_dbus   = callPackage ./pulseaudio_dbus {
+    inherit dbus_proxy;
+    inherit (luaPackages) buildLuaPackage;
+  };
 
-  pulseaudio_dbus   = callPackage ./pulseaudio_dbus {};
+  pulseaudio_widget = callPackage ./pulseaudio_widget {
+    inherit pulseaudio_dbus;
+    inherit (luaPackages) buildLuaPackage;
+  };
 
-  pulseaudio_widget = callPackage ./pulseaudio_widget {};
+  upower_dbus       = callPackage ./upower_dbus {
+    inherit dbus_proxy enum;
+    inherit (luaPackages) buildLuaPackage;
+  };
 
-  upower_dbus       = callPackage ./upower_dbus {};
+  power_widget      = callPackage ./power_widget {
+    inherit upower_dbus;
+    inherit (luaPackages) buildLuaPackage;
+  };
 
 }
