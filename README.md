@@ -1,7 +1,7 @@
 # Custom Nixpkgs Overlays
 
 This is a collection of packages to add to the [Nix Packages
-Collextion](https://nixos.org/nixpkgs/manual/) for use with
+Collection](https://nixos.org/nixpkgs/manual/) for use with
 [Nix](https://nixos.org/nix/manual/) and/or
 [NixOS](https://nixos.org/nixos/manual/).
 
