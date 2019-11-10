@@ -7,14 +7,14 @@ let
 in
 
 buildLuaPackage rec {
-  version = "0.4.0";
+  version = "0.5.0";
   name = "${simpleName}-${version}";
 
   src = fetchFromGitHub {
     owner = "stefano-m";
     repo = "lua-${simpleName}";
     rev = "v${version}";
-    sha256 = "1jpg757q0s2rj3brccbka5ad514bqcq97qisxf2zc6pk5ql0jbn0";
+    sha256 = "1h7lphxcslz4i7dhxacw7qfrk993yaabvf8xjs7vhbvb3lz2ayi0";
   };
 
   propagatedBuildInputs = [ dbus_proxy ];
