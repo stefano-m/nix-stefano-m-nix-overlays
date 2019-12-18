@@ -7,14 +7,14 @@ let
 in
 
 buildLuaPackage rec {
-  version = "0.5.2";
+  version = "0.5.3";
   name = "${simpleName}-${version}";
 
   src = fetchFromGitHub {
     owner = "stefano-m";
     repo = "awesome-${simpleName}";
     rev = "v${version}";
-    sha256 = "02plylcxxb04sdzm6ncqy0wl66aw14j4hyy7dw9jhgsbgr0wyjdr";
+    sha256 = "17gg4nd8lhmfdqw12f01v0a6c8sl12q556wsg4ysrlnlfp0rr31c";
   };
 
   # FIXME: cannot find awesome libraries
