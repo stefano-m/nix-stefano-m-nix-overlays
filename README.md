@@ -36,3 +36,43 @@ nixpkgs.overlays = with builtins; [
   )
 ];
 ```
+
+### Using the overlays in NixOS with awesomewm
+
+Most of the Lua overlays are actually useful in conjunction with the [Awesome
+Window Manager](https://awesomewm.org/) which **must** be built with GTK
+support.
+
+In this case, your NixOS configuration should look something like:
+
+``` nix
+# /etc/nixos/configuration.nix
+nixpkgs.overlays = with builtins; [
+
+    (self: super: { awesome = super.awesome.override { gtk3Support = true; }; })
+
+    (
+      import (fetchGit {
+        url = "https://github.com/stefano-m/nix-stefano-m-nix-overlays.git";
+        rev = "0000000000000000000000000000000000000000";  # git revision heere
+      })
+    )
+
+];
+
+services.xserver.windowManager.windowManager = {
+   awesome = {
+     enable = true;
+     luaModules = with pkgs.extraLuaPackages; [ # need overalys for this to work!
+       connman_dbus
+       connman_widget
+       dbus_proxy
+       enum
+       media_player
+       power_widget
+       pulseaudio_dbus
+       pulseaudio_widget
+       upower_dbus
+     ];
+   };
+```
