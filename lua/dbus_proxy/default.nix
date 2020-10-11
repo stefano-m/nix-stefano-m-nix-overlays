@@ -8,14 +8,14 @@ in
 
 # TODO: add busted and checkPhase?
 buildLuaPackage rec {
-  version = "0.10.1";
+  version = "0.10.2";
   name = "${simpleName}-${version}";
 
   src = fetchFromGitHub {
     owner = "stefano-m";
     repo = "lua-${simpleName}";
     rev = "v${version}";
-    sha256 = "064xqzc2jvag25s6kq0k5hirpghkfpgyyv1h4f7w5qmvzglxh7kz";
+    sha256 = "0kl8ff1g1kpmslzzf53cbzfl1bmb5cb91w431hbz0z0vdrramh6l";
   };
 
   propagatedBuildInputs = [ lgi ];
