@@ -1,11 +1,15 @@
-{ buildGo113Module, fetchFromGitHub, libglvnd, libsecret, pkg-config }:
+{ buildGoModule, fetchFromGitHub, libglvnd, libsecret, pkg-config }:
 
-buildGo113Module rec {
+buildGoModule rec {
   pname = "protonmail-bridge";
   version = "1.5.0";
   shortRev = "9a77650";  # used for --version option
 
-  buildInputs = [ pkg-config libglvnd libsecret ];
+  nativeBuildInputs = [ pkg-config ];
+
+  buildInputs = [ libglvnd libsecret ];
+
+  doCheck = false;  # tests need upstream infrastructure.
 
   src = fetchFromGitHub {
     owner = "ProtonMail";
@@ -14,7 +18,7 @@ buildGo113Module rec {
     sha256 = "19ircj2mdb7dnp8aj17zdkbv1aq9qra1hk5jxj7dikvha4mb0yll";
   };
 
-  modSha256 = "13g5yd0s173mmlwjjr1pnkgji6zhp5b7hssrqn4l4j8pwb5n3h7r";
+  vendorSha256 = "061mffkk7m3pwv2hv0hwvbk9m9pyr28581ra5ibpzdawl1zbpzvq";
 
   subPackages = [ "cmd/Desktop-Bridge" ];
 
