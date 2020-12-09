@@ -2,8 +2,8 @@
 
 buildGoModule rec {
   pname = "protonmail-bridge";
-  version = "1.5.0";
-  shortRev = "9a77650";  # used for --version option
+  version = "1.5.2";
+  shortRev = "072ce54";  # used for --version option
 
   nativeBuildInputs = [ pkg-config ];
 
@@ -15,10 +15,10 @@ buildGoModule rec {
     owner = "ProtonMail";
     repo = "proton-bridge";
     rev = "br-${version}";
-    sha256 = "19ircj2mdb7dnp8aj17zdkbv1aq9qra1hk5jxj7dikvha4mb0yll";
+    sha256 = "1mv7fwapcarii43nnsgk7ifqlah07k54zk6vxxxmrp04gy0mzki6";
   };
 
-  vendorSha256 = "061mffkk7m3pwv2hv0hwvbk9m9pyr28581ra5ibpzdawl1zbpzvq";
+  vendorSha256 = "01d6by8xj9py72lpfns08zqnsym98v8imb7d6hgmnzp4hfqzbz3c";
 
   subPackages = [ "cmd/Desktop-Bridge" ];
 
