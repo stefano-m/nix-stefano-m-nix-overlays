@@ -1,11 +1,9 @@
-{upower_dbus, lua, buildLuaPackage, fetchFromGitHub}:
-
+{ upower_dbus, lua, buildLuaPackage, fetchFromGitHub }:
 let
 
   simpleName = "power_widget";
 
 in
-
 buildLuaPackage rec {
   version = "0.5.4";
   name = "${simpleName}-${version}";

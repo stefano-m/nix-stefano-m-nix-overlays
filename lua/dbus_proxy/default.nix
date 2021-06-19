@@ -1,11 +1,9 @@
-{lua, lgi, buildLuaPackage, fetchFromGitHub}:
-
+{ lua, lgi, buildLuaPackage, fetchFromGitHub }:
 let
 
   simpleName = "dbus_proxy";
 
 in
-
 # TODO: add busted and checkPhase?
 buildLuaPackage rec {
   version = "0.10.2";
@@ -23,8 +21,8 @@ buildLuaPackage rec {
   buildPhase = ":";
 
   installPhase = ''
-  mkdir -p "$out/share/lua/${lua.luaversion}"
-  cp -r src/${simpleName} "$out/share/lua/${lua.luaversion}/"
+    mkdir -p "$out/share/lua/${lua.luaversion}"
+    cp -r src/${simpleName} "$out/share/lua/${lua.luaversion}/"
   '';
 
 }

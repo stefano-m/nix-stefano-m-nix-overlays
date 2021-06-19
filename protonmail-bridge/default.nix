@@ -1,12 +1,10 @@
 { buildGoModule, fetchFromGitHub, libglvnd, libsecret, pkg-config }:
-
 let
   version = "1.6.5";
   shortRev = "845074f";  # used for --version option
   vendorSha256 = "04aa7syp5hhpqxdpqlsmmbwywnbrh4ia0diym2935jbrqccnvm1k";
   sha256 = "0wyxcmjzxwvv72pdn9wqc904dawj7w47rl99dn8iy8gxgd4hlvmi";
 in
-
 buildGoModule rec {
   inherit version shortRev vendorSha256;
 
@@ -16,7 +14,7 @@ buildGoModule rec {
 
   buildInputs = [ libglvnd libsecret ];
 
-  doCheck = false;  # tests need upstream infrastructure.
+  doCheck = false; # tests need upstream infrastructure.
 
   src = fetchFromGitHub {
     inherit sha256;

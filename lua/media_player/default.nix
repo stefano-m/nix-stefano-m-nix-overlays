@@ -1,11 +1,9 @@
-{dbus_proxy, lua, buildLuaPackage, fetchFromGitHub}:
-
+{ dbus_proxy, lua, buildLuaPackage, fetchFromGitHub }:
 let
 
   simpleName = "media_player";
 
 in
-
 buildLuaPackage rec {
   version = "0.3.1";
   name = "${simpleName}-${version}";

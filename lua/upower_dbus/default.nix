@@ -1,11 +1,9 @@
-{dbus_proxy, enum, lua, buildLuaPackage, fetchFromGitHub}:
-
+{ dbus_proxy, enum, lua, buildLuaPackage, fetchFromGitHub }:
 let
 
   simpleName = "upower_dbus";
 
 in
-
 buildLuaPackage rec {
   version = "0.3.0";
   name = "${simpleName}-${version}";

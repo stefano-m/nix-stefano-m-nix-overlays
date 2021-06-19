@@ -1,11 +1,9 @@
-{dbus_proxy, lua, buildLuaPackage, fetchFromGitHub}:
-
+{ dbus_proxy, lua, buildLuaPackage, fetchFromGitHub }:
 let
 
   simpleName = "pulseaudio_dbus";
 
 in
-
 buildLuaPackage rec {
   version = "0.12.0";
   name = "${simpleName}-${version}";

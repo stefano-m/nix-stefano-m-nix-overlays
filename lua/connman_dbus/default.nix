@@ -1,11 +1,9 @@
-{dbus_proxy, lua, buildLuaPackage, fetchFromGitHub}:
-
+{ dbus_proxy, lua, buildLuaPackage, fetchFromGitHub }:
 let
 
   simpleName = "connman_dbus";
 
 in
-
 buildLuaPackage rec {
   version = "0.5.0";
   name = "${simpleName}-${version}";

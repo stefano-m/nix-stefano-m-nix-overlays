@@ -1,11 +1,9 @@
-{lua, buildLuaPackage, fetchFromGitHub}:
-
+{ lua, buildLuaPackage, fetchFromGitHub }:
 let
 
   simpleName = "enum";
 
 in
-
 buildLuaPackage rec {
   version = "0.1.1";
   name = "${simpleName}-${version}";

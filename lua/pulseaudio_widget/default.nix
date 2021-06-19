@@ -1,11 +1,9 @@
-{pulseaudio_dbus, lua, buildLuaPackage, fetchFromGitHub}:
-
+{ pulseaudio_dbus, lua, buildLuaPackage, fetchFromGitHub }:
 let
 
   simpleName = "pulseaudio_widget";
 
 in
-
 buildLuaPackage rec {
   version = "0.6.1";
   name = "${simpleName}-${version}";
