@@ -1,9 +1,9 @@
 { buildGoModule, fetchFromGitHub, libglvnd, libsecret, pkg-config }:
 let
-  version = "1.6.5";
-  shortRev = "845074f";  # used for --version option
-  vendorSha256 = "04aa7syp5hhpqxdpqlsmmbwywnbrh4ia0diym2935jbrqccnvm1k";
-  sha256 = "0wyxcmjzxwvv72pdn9wqc904dawj7w47rl99dn8iy8gxgd4hlvmi";
+  version = "1.8.5";
+  shortRev = "df5fbda";  # used for --version option
+  vendorSha256 = "sha256-DTCArUOgptlY/+LAnWX3Nh4wa8SIevPiQjUktJf783M=";
+  sha256 = "1b9g0754khhs2bfgla7p2png3ncmszhdjlznlg7nq3kd0az6hd28";
 in
 buildGoModule rec {
   inherit version shortRev vendorSha256;
@@ -20,7 +20,7 @@ buildGoModule rec {
     inherit sha256;
     owner = "ProtonMail";
     repo = "proton-bridge";
-    rev = "br-${version}";
+    rev = "v${version}";
   };
 
   subPackages = [ "cmd/Desktop-Bridge" ];
