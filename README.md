@@ -76,3 +76,15 @@ services.xserver.windowManager.windowManager = {
      ];
    };
 ```
+
+## Building locally
+
+The [`build.sh`](./build.sh) script is a simple wrapper around `nix-build` to
+build the packages from the git repository. This is mostly useful for testing
+new changes.
+
+For example:
+
+``` shell
+./build.sh extraLuaPackages.connman_dbus
+```
