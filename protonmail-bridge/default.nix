@@ -1,4 +1,4 @@
-{ buildGoModule, fetchFromGitHub, libglvnd, libsecret, pkg-config }:
+{ buildGoModule, fetchFromGitHub, libglvnd, libsecret, pkg-config, logToStderr ? true }:
 let
   version = "1.8.5";
   shortRev = "df5fbda";  # used for --version option
@@ -24,6 +24,11 @@ buildGoModule rec {
   };
 
   subPackages = [ "cmd/Desktop-Bridge" ];
+
+  patches =
+    if logToStderr then [
+      ./patches/0001-Send-all-logs-to-stderr.patch
+    ] else [ ];
 
   buildFlags = [
     "-tags pmapi_prod"

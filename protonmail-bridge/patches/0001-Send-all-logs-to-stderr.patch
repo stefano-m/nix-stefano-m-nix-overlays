@@ -1,0 +1,54 @@
+---
+ internal/logging/logging.go | 18 ++----------------
+ 1 file changed, 2 insertions(+), 16 deletions(-)
+
+diff --git a/internal/logging/logging.go b/internal/logging/logging.go
+index 62b886e..57af0e4 100644
+--- a/internal/logging/logging.go
++++ b/internal/logging/logging.go
+@@ -19,13 +19,10 @@ package logging
+ 
+ import (
+ 	"fmt"
+-	"io"
+ 	"os"
+-	"path/filepath"
+ 	"regexp"
+ 	"time"
+ 
+-	"github.com/ProtonMail/proton-bridge/internal/constants"
+ 	"github.com/sirupsen/logrus"
+ 	"github.com/sirupsen/logrus/hooks/writer"
+ )
+@@ -42,7 +39,7 @@ const (
+ 
+ func Init(logsPath string) error {
+ 	logrus.SetFormatter(&logrus.TextFormatter{
+-		ForceColors:     true,
++		ForceColors:     false,
+ 		FullTimestamp:   true,
+ 		TimestampFormat: time.StampMilli,
+ 	})
+@@ -55,18 +52,7 @@ func Init(logsPath string) error {
+ 		},
+ 	})
+ 
+-	rotator, err := NewRotator(MaxLogSize, func() (io.WriteCloser, error) {
+-		if err := clearLogs(logsPath, MaxLogs); err != nil {
+-			return nil, err
+-		}
+-
+-		return os.Create(filepath.Join(logsPath, getLogName(constants.Version, constants.Revision)))
+-	})
+-	if err != nil {
+-		return err
+-	}
+-
+-	logrus.SetOutput(rotator)
++	logrus.SetOutput(os.Stderr)
+ 	return nil
+ }
+ 
+-- 
+2.31.1
+
