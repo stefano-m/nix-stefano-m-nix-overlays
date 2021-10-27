@@ -1,9 +1,9 @@
 { buildGoModule, fetchFromGitHub, libglvnd, libsecret, pkg-config, logToStderr ? true }:
 let
-  version = "1.8.7";
-  shortRev = "7ab54da";  # used for --version option
-  vendorSha256 = "sha256-g2vl1Ctxr2U+D/k9u9oXuZ1OWaABIJs0gmfhWh13ZFM=";
-  sha256 = "1887qa59i4vj3q71sd48hdcrinq0gm235qync6qqapsy0ywcyabg";
+  version = "1.8.10";
+  shortRev = "c35ff4f";  # used for --version option
+  vendorSha256 = "sha256-hRGedgdQlky9UBqsVTSbgAgii1skF/MA21ZQ0+goaM4=";
+  sha256 = "0bn1x4gnlnr36m9jj3sraqz7apz581712651cxf57qc6c9y4bajg";
 in
 buildGoModule rec {
   inherit version shortRev vendorSha256;
