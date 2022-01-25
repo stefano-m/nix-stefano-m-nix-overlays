@@ -1,16 +1,17 @@
 { dbus_proxy, lua, buildLuaPackage, fetchFromGitHub }:
 let
 
-  simpleName = "pulseaudio_dbus";
+  pname = "pulseaudio_dbus";
 
 in
 buildLuaPackage rec {
   version = "0.12.0";
-  name = "${simpleName}-${version}";
+  name = "${pname}-${version}";
+  inherit pname;
 
   src = fetchFromGitHub {
     owner = "stefano-m";
-    repo = "lua-${simpleName}";
+    repo = "lua-${pname}";
     rev = "v${version}";
     sha256 = "1l4nalziwmy3d7sb4jij2d1cml5ghzkg8cwj25v82brj36v3kqd7";
   };
@@ -21,7 +22,7 @@ buildLuaPackage rec {
 
   installPhase = ''
     mkdir -p "$out/share/lua/${lua.luaversion}"
-    cp -r src/${simpleName} "$out/share/lua/${lua.luaversion}/"
+    cp -r src/${pname} "$out/share/lua/${lua.luaversion}/"
   '';
 
 }

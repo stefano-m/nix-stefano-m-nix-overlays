@@ -1,16 +1,17 @@
 { dbus_proxy, lua, buildLuaPackage, fetchFromGitHub }:
 let
 
-  simpleName = "media_player";
+  pname = "media_player";
 
 in
 buildLuaPackage rec {
   version = "0.3.1";
-  name = "${simpleName}-${version}";
+  name = "${pname}-${version}";
+  inherit pname;
 
   src = fetchFromGitHub {
     owner = "stefano-m";
-    repo = "awesome-${simpleName}";
+    repo = "awesome-${pname}";
     rev = "v${version}";
     sha256 = "1c9aimf5kw6k800wv8cvazqyndbg9zgfv9yi38my8zmlrvjvmg6r";
   };
@@ -21,7 +22,7 @@ buildLuaPackage rec {
 
   installPhase = ''
     mkdir -p "$out/share/lua/${lua.luaversion}"
-    cp -r ${simpleName}.lua "$out/share/lua/${lua.luaversion}/"
+    cp -r ${pname}.lua "$out/share/lua/${lua.luaversion}/"
   '';
 
 }
