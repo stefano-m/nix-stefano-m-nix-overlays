@@ -30,10 +30,7 @@ buildGoModule rec {
       ./patches/0001-Send-all-logs-to-stderr.patch
     ] else [ ];
 
-  buildFlags = [
-    "-tags pmapi_prod"
-    "-tags nogui"
-  ];
+  tags = [ "pmapi_prod" "nogui" ];
 
   preBuild = ''
     # See commit bad8cad
@@ -43,14 +40,13 @@ buildGoModule rec {
     cd ..
   '';
 
-  buildFlagsArray = ''
-    -ldflags=
-      -X github.com/ProtonMail/proton-bridge/internal/constants.Version=${version}
-      -X github.com/ProtonMail/proton-bridge/internal/constants.Revision=${shortRev}
-      -X github.com/ProtonMail/proton-bridge/internal/constants.BuildTime=0
-      -X main.ConfigName=bridge
-      -X main.ExeName=proton-bridge
-  '';
+  ldflags = [
+    "-X github.com/ProtonMail/proton-bridge/internal/constants.Version=${version}"
+    "-X github.com/ProtonMail/proton-bridge/internal/constants.Revision=${shortRev}"
+    "-X github.com/ProtonMail/proton-bridge/internal/constants.BuildTime=0"
+    "-X main.ConfigName=bridge"
+    "-X main.ExeName=proton-bridge"
+  ];
 
   postInstall = "mv $out/bin/Desktop-Bridge $out/bin/protonmail-bridge";
 
