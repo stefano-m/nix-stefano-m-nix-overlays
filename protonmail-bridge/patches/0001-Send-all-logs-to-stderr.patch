@@ -1,9 +1,14 @@
+From 452cd810035ee1ae99d7a6d3a52f8c5f66ab1c1e Mon Sep 17 00:00:00 2001
+From: Stefano Mazzucco <stefano@curso.re>
+Date: Sun, 27 Feb 2022 11:43:18 +0000
+Subject: [PATCH] Send all logs to stderr
+
 ---
- internal/logging/logging.go | 18 ++----------------
- 1 file changed, 2 insertions(+), 16 deletions(-)
+ internal/logging/logging.go | 19 ++-----------------
+ 1 file changed, 2 insertions(+), 17 deletions(-)
 
 diff --git a/internal/logging/logging.go b/internal/logging/logging.go
-index 62b886e..57af0e4 100644
+index 791b144..f1031dd 100644
 --- a/internal/logging/logging.go
 +++ b/internal/logging/logging.go
 @@ -19,13 +19,10 @@ package logging
@@ -20,7 +25,7 @@ index 62b886e..57af0e4 100644
  	"github.com/sirupsen/logrus"
  	"github.com/sirupsen/logrus/hooks/writer"
  )
-@@ -42,7 +39,7 @@ const (
+@@ -47,7 +44,7 @@ const (
  
  func Init(logsPath string) error {
  	logrus.SetFormatter(&logrus.TextFormatter{
@@ -29,12 +34,13 @@ index 62b886e..57af0e4 100644
  		FullTimestamp:   true,
  		TimestampFormat: time.StampMilli,
  	})
-@@ -55,18 +52,7 @@ func Init(logsPath string) error {
+@@ -60,19 +57,7 @@ func Init(logsPath string) error {
  		},
  	})
  
 -	rotator, err := NewRotator(MaxLogSize, func() (io.WriteCloser, error) {
--		if err := clearLogs(logsPath, MaxLogs); err != nil {
+-		// Leaving MaxLogs-1 since new log file will be opened right away.
+-		if err := clearLogs(logsPath, MaxLogs-1, MaxLogs); err != nil {
 -			return nil, err
 -		}
 -
@@ -50,5 +56,5 @@ index 62b886e..57af0e4 100644
  }
  
 -- 
-2.31.1
+2.33.1
 

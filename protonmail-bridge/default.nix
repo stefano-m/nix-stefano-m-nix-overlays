@@ -1,9 +1,9 @@
 { buildGoModule, fetchFromGitHub, libglvnd, libsecret, pkg-config, logToStderr ? true }:
 let
-  version = "1.8.10";
+  version = "2.1.1";
   shortRev = "c35ff4f";  # used for --version option
-  vendorSha256 = "sha256-hRGedgdQlky9UBqsVTSbgAgii1skF/MA21ZQ0+goaM4=";
-  sha256 = "0bn1x4gnlnr36m9jj3sraqz7apz581712651cxf57qc6c9y4bajg";
+  vendorSha256 = "sha256-n+WwkNHT+/CrC4vWIVHqYs2a8Qe/LNc0L3uoPZWDTts=";
+  sha256 = "0682gvcarfhr7cnyidfpphlgcwsknlv593w0cr83nrir0paw107j";
 in
 buildGoModule rec {
   inherit version shortRev vendorSha256;
@@ -36,7 +36,6 @@ buildGoModule rec {
     # See commit bad8cad
     cd ./utils
     bash ./credits.sh bridge
-    bash ./credits.sh importexport
     cd ..
   '';
 
