@@ -6,7 +6,7 @@ let
 in
 # TODO: add busted and checkPhase?
 buildLuaPackage rec {
-  version = "0.10.2";
+  version = "0.10.3";
   name = "${pname}-${version}";
   inherit pname;
 
@@ -14,7 +14,7 @@ buildLuaPackage rec {
     owner = "stefano-m";
     repo = "lua-${pname}";
     rev = "v${version}";
-    sha256 = "0kl8ff1g1kpmslzzf53cbzfl1bmb5cb91w431hbz0z0vdrramh6l";
+    sha256 = "sha256-Yd8TN/vKiqX7NOZyy8OwOnreWS5gdyVMTAjFqoAuces=";
   };
 
   propagatedBuildInputs = [ lgi ];
